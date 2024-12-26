@@ -3,21 +3,44 @@ import java.util.Scanner;
 public class HouseBuild {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the value oh width");
-		int width = sc.nextInt();
-		System.out.println("Enter the value oh width");
-		int height = sc.nextInt();
 		
-		int area = width * height;
-		if (width % 2 != 0 && height % 2!= 0) {
-			System.out.println("Good Aya");
-		} else  {
-			System.out.println("Not a good Aya");
-		}
+      // Taking User inputs
+		System.out.println("Choose Option");
+		String s = sc.nextLine();
+		System.out.println("Enter the value of length");
+		String length1 = sc.nextLine();
+		System.out.println("Enter the value of width");
+		String width1 = sc.nextLine();
 		
-		int remainder = area % 8;
+		double length = Double.parseDouble(length1);
+		double width = Double.parseDouble(width1);
+		
+		int integer1 = (int)length;
+		double decimal1 = length - integer1;
+		double convertToInch1 = integer1 * 12 + decimal1*10;
+		System.out.println("In Inches: " + (int)convertToInch1);
+		
+		int integer2 = (int)width;
+		double decimal2 =  width - integer2;
+		double convertToInch2 = integer2 * 12 + decimal2*10;
+		System.out.println("In Inches: " + (int)convertToInch2);
 		
 		
+		
+		// find Aya  as per choose
+		if (s.equals("Foot")) {
+		 double area = length * width;
+		System.out.println("Area: " + (int)area);
+int remainder = (int)( area) % 8;
+
+if (length % 2 != 0 && width % 2!= 0) {
+	System.out.println("Good Aya");
+} else  {
+	System.out.println("Not a good Aya");
+}
+
+		
+		// differentiating Aya based on Aya using remainder
 	switch (remainder) {
 	
 	case 1: 
@@ -45,66 +68,110 @@ public class HouseBuild {
 		System.out.println("Vayasaya or Ushtraya");
 		break;
 	}
+	// Dhana-Runa
+	double dhana1 = area * 8;
+	double dhana2 = Math.round(dhana1)/12;
+	double dhana3 = dhana2 * 12;
+	double dhana = dhana1 - dhana3;
+	System.out.println("Dhana: " + (int)dhana);
 	
-	int dhana = (area * 8)/12;
+	double runa1 = area  * 4;
+	double runa2 = Math.round(runa1)/8;
+	double runa3 = runa2 * 8;
+	double runa = runa1 - runa3;
+	System.out.println("Runa: " + (int)runa);
 	
-	int runa = (area  * 4)/8;
-	
-	int ayushya = (area * 6)/120;
-	
-	if (ayushya >= 60) {
-		System.out.println("Ayushya: Shubha");
+	if (runa > dhana) {
+		System.out.println("Dhana-runa: Ashubha");
 	} else {
-		System.out.println("Ayushya: Ashubha");
+		System.out.println("Dhana-runa: Shubha");
 	}
 	
-	int tithi = (area * 8)/30;
+	// call all the calculations
 	
-	if (tithi == 4 || tithi == 6 || tithi == 14 || tithi == 30) {
-		System.out.println("Tithi: Shubha");
-	} else {
-		System.out.println("Tithi: Ashubha");
-	}
+	CalculationsOfBulidHouse.findAyushya(area);
+	CalculationsOfBulidHouse.findtithi(area);
+	CalculationsOfBulidHouse.findVar(area);
+	CalculationsOfBulidHouse.findNakshatra(area);
+	CalculationsOfBulidHouse.fingYoga(area);
+	CalculationsOfBulidHouse.findAnsh(area);
+	CalculationsOfBulidHouse.findDikpalaka(area);
 	
-	int var = (area * 6)/7;
-	
-	if (var == 2 || var == 4 || var == 5 || var == 6) {
-		System.out.println("Var: Uttama");
-	} else {
-		System.out.println("Var: Not Uttama");
-	}
-	
-	int nakshatra = (area * 8)/27;
-	
-	if (nakshatra == 2 || nakshatra == 3 || nakshatra == 9 || nakshatra == 10 || nakshatra == 11 || nakshatra == 16 || nakshatra == 18 || nakshatra == 19 || nakshatra == 20 || nakshatra == 25) {
-		System.out.println("Nakshatra: Ashubha");
-	} else {
-		System.out.println("Nakshatra: Shubha");
-	}
-	
-	int yoga = (area * 4)/27;
-	
-	if (yoga == 1 || yoga ==  6|| yoga == 9 || yoga == 10 || yoga == 13 || yoga == 15 || yoga == 17 || yoga == 19 || yoga == 27) {
-		System.out.println("Yoga: Ashubha");
-	} else {
-		System.out.println("Yoga: Shubha");
-	}
-	
-	int  ansh = (area * 6)/9;
-	
-	if (ansh == 2 || ansh == 3 || ansh == 7 || ansh == 8 || ansh == 9) {
-		System.out.println("Ansh: Shubha");
-	} else {
-		System.out.println("Ansh: Ashubha");
-	}
-	
-	int dikpalaka = ayushya / 8;
-	
-	if (dikpalaka == 1 || dikpalaka == 5 || dikpalaka == 7 || dikpalaka == 8) {
-		System.out.println("dikpalaka: Uttama");
-	} else {
-		System.out.println("dikpalaka:Not Uttama");
-	}
+		} 
+		else if (s.equals("Inch")) {
+			 int areaInInches = (int) (convertToInch1 * convertToInch2);
+			 System.out.println("Area: " + (int)areaInInches);
+			 
+			 int remainder = ( areaInInches) % 8;
+			 
+			 if (length % 2 != 0 && width % 2!= 0) {
+					System.out.println("Good Aya");
+				} else  {
+					System.out.println("Not a good Aya");
+				}
+				
+				
+				// differentiating Aya based on Aya using remainder
+			switch (remainder) {
+			
+			case 1: 
+				System.out.println("Dhwajaya");
+				break;
+			case 2: 
+				System.out.println("Dhumraya");
+				break;
+			case 3: 
+				System.out.println("Simhayaya");
+				break;
+			case 4: 
+				System.out.println("Shunakrayaya");
+				break;
+			case 5: 
+				System.out.println("Vrushabhaya");
+				break;
+			case 6: 
+				System.out.println("Kharaya");
+				break;
+			case 7: 
+				System.out.println("Gajaya");
+				break;
+			default: 
+				System.out.println("Vayasaya or Ushtraya");
+				break;
+			}
+			// Dhana-Runa
+			int dhana1 = areaInInches * 8;
+			int dhana2 = dhana1/12;
+			int dhana3 = dhana2 * 12;
+			int dhana = dhana1 - dhana3;
+			System.out.println("Dhana: " + dhana);
+			
+			int runa1 = areaInInches * 4;
+			int runa2 = runa1/8;
+			int runa3 = runa2 * 8;
+			int runa = runa1 - runa3;
+			System.out.println("Runa: " + runa);
+			
+			if (runa > dhana) {
+				System.out.println("Dhana-runa: Ashubha");
+			} else {
+				System.out.println("Dhana-runa: Shubha");
+			}
+			
+			// call all the calculations
+			
+			CalculationsOfBulidHouse.findAyushya(areaInInches);
+			CalculationsOfBulidHouse.findtithi(areaInInches);
+			CalculationsOfBulidHouse.findVar(areaInInches);
+			CalculationsOfBulidHouse.findNakshatra(areaInInches);
+			CalculationsOfBulidHouse.fingYoga(areaInInches);
+			CalculationsOfBulidHouse.findAnsh(areaInInches);
+			CalculationsOfBulidHouse.findDikpalaka(areaInInches);
+			
+		}
+		
+		
+		
 	}
 
 }
